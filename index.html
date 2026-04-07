@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Citações</title>
+        <style>
+            body { font-family: Georgia, serif; max-width: 40rem; margin: 2rem auto; padding: 0 1rem;
+                line-height: 1.5; color: #1a1a1a; background: #fafafa; }
+            h1 { font-weight: 600; border-bottom: 2px solid #2c5282; padding-bottom: 0.35rem; }
+            h2 { font-size: 1.15rem; color: #2d3748; margin-top: 2rem; }
+            ul.citacoes { list-style: none; padding: 0; margin: 0; }
+            ul.citacoes li { margin: 1.25rem 0; padding: 1rem 1.25rem; background: #fff;
+                border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); border-left: 4px solid #2c5282; }
+            blockquote { margin: 0 0 0.5rem 0; font-style: italic; }
+            footer { font-size: 0.9rem; color: #4a5568; }
+        </style>
+    </head>
+    <body>
+        <h1>Minha página inicial</h1>
+        <p>Bem-vindo ao meu site de citações</p>
+        <div>
+            <h2>Lista de pessoas e suas citações</h2>
+            <ul class="citacoes"></ul>
+        </div>
+
+        <script>
+            // fazer uma requisição para a API /todas-citacoes
+            fetch('http://127.0.0.1:5000/todas-citacoes')
+                .then(response => response.json())
+                .then(data => {
+                    const itens = document.querySelector('.citacoes');
+                    itens.innerHTML = data.map(item => `<li>${item}</li>`).join('');
+                });
+        </script>
+    </body>
+</html>
