@@ -112,4 +112,4 @@ def get_pessoas():
 
 # curl http://127.0.0.1:5000/pessoa
 
-app.run()
+app.run(host="0.0.0.0", port=5000)
